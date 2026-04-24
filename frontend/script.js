@@ -1,6 +1,6 @@
 // Configuration
-const API_URL = 'http://localhost:5000'; // Change this when deploying
-// const API_URL = 'https://your-deployed-api.com'; // For production
+const API_URL = 'https://bfhl-api-v9u5.onrender.com'; // Production API
+// const API_URL = 'http://localhost:5000'; // For local testing
 
 // DOM Elements
 const inputArea = document.getElementById('inputArea');
