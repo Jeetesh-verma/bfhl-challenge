@@ -1,0 +1,9 @@
+{
+  "name": "bfhl-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for BFHL API",
+  "private": true,
+  "scripts": {
+    "start": "python -m http.server 3000 || npx http-server -p 3000"
+  }
+}

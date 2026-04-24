@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFHL - Hierarchy Processing System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🌳 Hierarchy Processing System</h1>
+                <p class="subtitle">SRM Full Stack Engineering Challenge</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="section-card">
+                    <h2>Enter Node Relationships</h2>
+                    <p class="helper-text">Enter edges in format: <code>A->B</code>, one per line</p>
+                    <textarea 
+                        id="inputArea" 
+                        placeholder="A->B&#10;A->C&#10;B->D&#10;C->E&#10;E->F"
+                        class="input-textarea"
+                    ></textarea>
+                    <button id="submitBtn" class="btn-submit">
+                        <span class="btn-text">Process Hierarchies</span>
+                        <span class="btn-loader hidden"></span>
+                    </button>
+                </div>
+
+                <!-- Example Button -->
+                <div class="example-section">
+                    <button id="exampleBtn" class="btn-example">📋 Load Example</button>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-section hidden">
+                <!-- User Info Card -->
+                <div class="info-card">
+                    <h3>📊 Processing Summary</h3>
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <span class="summary-label">Total Trees</span>
+                            <span id="totalTrees" class="summary-value">0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Total Cycles</span>
+                            <span id="totalCycles" class="summary-value">0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Largest Tree Root</span>
+                            <span id="largestRoot" class="summary-value">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hierarchies Display -->
+                <div id="hierarchiesContainer" class="hierarchies-container"></div>
+
+                <!-- Invalid & Duplicates -->
+                <div class="errors-section">
+                    <div id="invalidSection" class="error-card hidden">
+                        <h3>⚠️ Invalid Entries</h3>
+                        <div id="invalidList" class="error-list"></div>
+                    </div>
+
+                    <div id="duplicateSection" class="error-card hidden">
+                        <h3>🔄 Duplicate Edges</h3>
+                        <div id="duplicateList" class="error-list"></div>
+                    </div>
+                </div>
+
+                <button id="resetBtn" class="btn-reset">↺ Reset</button>
+            </section>
+
+            <!-- Error Display -->
+            <div id="errorSection" class="error-message hidden"></div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made by ❤️ <strong>Jeetesh Kumar Verma</strong> | SRM Full Stack Engineering Challenge</p>
+            <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 8px;">Built with Node.js • Express • Vanilla JS</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

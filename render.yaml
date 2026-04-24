@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: bfhl-api
+    runtime: node
+    plan: free
+    buildCommand: "cd backend && npm install"
+    startCommand: "cd backend && npm start"
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: NODE_ENV
+        value: production
+
+  - type: static
+    name: bfhl-frontend
+    plan: free
+    staticPublishPath: ./frontend
+    buildCommand: "echo 'Frontend is ready'"
+    routes:
+      - path: /
+        redirectTo: /index.html
