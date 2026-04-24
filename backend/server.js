@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -8,6 +9,9 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from frontend directory
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Import the hierarchy processor
 const { processHierarchies } = require('./processor');
@@ -41,9 +45,14 @@ app.post('/bfhl', (req, res) => {
   }
 });
 
-// 404 handler
+// 404 handler - Fallback to index.html for SPA
 app.use((req, res) => {
-  res.status(404).json({ error: 'Route not found' });
+  // If it's an API request, return JSON error
+  if (req.path.startsWith('/api') || req.path.startsWith('/bfhl') || req.path.startsWith('/health')) {
+    return res.status(404).json({ error: 'Route not found' });
+  }
+  // Otherwise serve index.html for SPA routing
+  res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
 
 // Start server
