@@ -10,12 +10,3 @@ services:
         value: 3000
       - key: NODE_ENV
         value: production
-
-  - type: static
-    name: bfhl-frontend
-    plan: free
-    staticPublishPath: ./frontend
-    buildCommand: "echo 'Frontend is ready'"
-    routes:
-      - path: /
-        redirectTo: /index.html
